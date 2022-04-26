@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
     // 재생 제어를 위한 모든 에이전트 리스트
     private List<BaseGameEntity> entitys;
 
+    public static bool IsGameStop { get; set; } = false;
+
     private void Awake()
     {
         entitys = new List<BaseGameEntity>();
@@ -32,10 +34,19 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        if (IsGameStop == true) return;
+
         // 모든 에이전트의 Updated()를 호출해 에이전트 구동
         for(int i = 0; i < entitys.Count; ++i)
         {
             entitys[i].Updated();
         }
+    }
+
+    public static void Stop(BaseGameEntity entity)
+    {
+        IsGameStop = true;
+
+        entity.PrintText("100점 획들으로 프로그램을 종료합니다.");
     }
 }

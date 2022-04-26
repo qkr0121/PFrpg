@@ -1,6 +1,6 @@
 ﻿
 // 모든 상태가 상속받는 기반 클래스
-public abstract class State
+public abstract class State<T> where T : class
 {
     /// <summary>
     /// 해당 상태를 시작할 때 1회 호출
@@ -8,9 +8,9 @@ public abstract class State
     /// 해당 상태를 종료할 때 1회 호출
     /// </summary>
     
-    public abstract void Enter(Student entity);
+    public abstract void Enter(T entity);
 
-    public abstract void Execute(Student entity);
+    public abstract void Execute(T entity);
 
-    public abstract void Exit(Student entity);
+    public abstract void Exit(T entity);
 }
