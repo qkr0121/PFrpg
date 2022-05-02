@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     // 모든 에이전트들의 Updated() 를 호출합니다.
     private void Update()
     {
-        PlayerManager._Player.Updated();
+        PlayerManager.Instance.player.Updated();
     }
 
 }

@@ -1,1 +1,15 @@
-singleton의 instance 공부하기
+singleton의 instance : 하나의 인스턴스만 필요로 하는 경우 사용
+
+GameManager 
+
+- Awake() : DontDestroyOnLoad() 로 싱글톤 객체 유지
+- SceneLoadStarted(), SceneChanged() : 씬 시작, 변경시 실행내용
+- List<ManagerClassBase> _ManagerClasses 로 매니저 클래스들을 한꺼번에 관리한다.(RegisterManagerClass<T>() 로 등록할 수 있다.)
+
+ManagerClassBase
+- GameManager를 제외한 매니저 클래스들이 상속받아야 할 클래스
+- instance와 SceneLoad, SceneChanage 등을 가진다.
+
+
+
+GameManager 오브젝트가 2개일시 삭제하는 곳 오류 수정중

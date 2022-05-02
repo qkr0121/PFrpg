@@ -335,6 +335,7 @@
 "Assets/Script/Character/PlayerState.cs"
 "Assets/Script/Single/GameController.cs"
 "Assets/Script/Single/GameManager.cs"
+"Assets/Script/Single/ManagerClassbase.cs"
 "Assets/Script/Single/PlayerManager.cs"
 -langversion:9.0
 

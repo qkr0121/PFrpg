@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : ManagerClassbase<PlayerManager>
 {
-    public static Player _Player;
+    private Player _Player;
 
-    private void Start()
-    {
-        _Player = GameObject.Find("PlayerCharacter").GetComponent<Player>();
-    }
-
+    public Player player => _Player = _Player ??
+        GameObject.Find("PlayerCharacter").GetComponent<Player>();
 }
