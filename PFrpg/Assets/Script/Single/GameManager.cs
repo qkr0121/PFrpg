@@ -5,22 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _GameManager;
+    private static GameManager _GameManager = null;
+
+    private PlayerManager playerManager;
 
     private void Awake()
     {
-        base.gameObject.name = "GameManager";
-
-        // 다른 GameManager 가 존재하면 삭제하고 기존 GameManager를 파괴되지 않도록 합니다.
-        GameObject obj = GameObject.Find("GameManager");
-        _GameManager = obj.GetComponent<GameManager>();
-        if(_GameManager != this && _GameManager == null)
-        {
-            Object.Destroy(obj);
-        }
+        // 유일성 검사
+        if (_GameManager != null)
+            Destroy(this.gameObject);
         else
         {
-            Object.DontDestroyOnLoad(base.gameObject);
+            _GameManager = this;
+            DontDestroyOnLoad(gameObject);
         }
+
+        // Manager 등록
+        playerManager = transform.GetComponentInChildren<PlayerManager>();
+
     }
+
+    
 }
